@@ -1,0 +1,922 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" media="screen and (min-device-width: 769px)" href="large.css">
+        <link rel="stylesheet" media="screen and (min-device-width: 481px) and (max-width: 768px)" href="mobile.css">
+        <link rel="stylesheet" media="print and (min-device-width: 769px)" href="large.css">
+        <link rel="stylesheet" media="print and (min-device-width: 481px) and (max-width: 768px)" href="mobile.css">
+        <link rel="stylesheet" media="print and (max-device-width: 481px)" href="mobile.css">
+        <link rel="stylesheet" media="screen and (max-device-width: 481px)" href="mobile.css">
+        <script src="https://survey123.arcgis.com/api/jsapi/"></script>
+        <script src="https://js.arcgis.com/4.29/"></script>
+    </head>
+    <style>
+
+        </style>
+    <body>        
+        <div id="wphs_container">
+            <div id="logo_div" style="width: 100%;">
+                <img class="logo_img"/>
+            </div>
+            <div style="padding-top: 16px;">
+                <div style="text-align: left;" id="intro_div">
+                    <select id="lang_sel" style="display: none;" onchange="language_change()">        
+                        <option value="English" selected>English</option>
+                        <option value="Spanish">Español (América Latina)</option>
+                    </select>
+                    <div id="en_intro" class="intro_div" style="display: none;">
+                        <div class="cont-sub">There are six areas of health in your Whole Person Health Score. Each area has a letter score that ranges from A (healthiest) to Z (least healthy). The six areas of health are: </div><br/> 
+                        <table class="wphs-tbl">
+                            <tbody>
+                                <tr>
+                                    <td class="img-cell"><img class="p_img"></td>
+                                    <td><span class="person-letter">P</span><span class="person-desc">hysical Health: looks at your current physical and medical conditions</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="img-cell">
+                                        <img class="e_img">
+                                    </td>
+                                    <td>
+                                        <span class="person-letter">E</span><span class="person-desc">motional Health: looks at your emotional, mental, and spiritual well-being</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td class="img-cell"><img class="r_img" ></td>
+                                <td>
+                                    <span class="person-letter">R</span><span class="person-desc">esource Utilization: looks at how you use health care services</span>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="img-cell"><img class="s_img"></td>
+                                <td>
+                                    <span class="person-letter">S</span><span class="person-desc">ocioeconomics: looks at your living situation, finances, and resources</span>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="img-cell"><img class="o_img"></td>
+                                <td>
+                                    <span class="person-letter">O</span><span class="person-desc">wnership: looks at how you view your own health and ability to make change</span>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="img-cell"><img class="n_img"></td>
+                                <td>
+                                    <span class="person-letter">N</span><span class="person-desc">utrition and Lifestyle: looks at your health habits</span>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cont-sub">This form and the Whole Person Health Score will be forwarded to a county Resource Specialist in the agency you are working with for further review. </div>
+                        <div style="padding: 40px; text-align: center;"><button onclick="intro_click()">Next</button></div>                     
+                        <div id="en_copy_intro" class="copyright">Copyright © 2016-2024.<br/>
+                            Riverside University Health System. All Rights Reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior permission of the Whole Person Health Score Workgroup Team.</div>                    
+                    </div>
+                    <div id="es_intro" class="intro_div" style="display: none;">
+                        <div class="cont-sub">Hay seis áreas de salud en la evaluación de la Salud Integral de la Persona. Cada área tiene una puntuación de letras que va desde A (más saludable) a Z (menos saludable). Las seis áreas de la salud son: </div><br/> 
+                        <table class="wphs-tbl">
+                            <tbody>
+                            <tr>
+                                <td class="img-cell"><img class="p_img"></td>
+                                <td>
+                                    <span class="person-letter">Salud Física: </span><span class="person-desc">analiza tus condiciones físicas y médicas actuales</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="img-cell">
+                                    <img class="e_img" >
+                                </td>
+                                <td>
+                                    <span class="person-letter">Salud Emocional: </span><span class="person-desc">analiza tu bienestar emocional, mental y espiritual</span>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td class="img-cell"><img class="r_img"></td>
+                            <td>
+                                <span class="person-letter">Utilización de Recursos: </span><span class="person-desc">analiza cómo utilizas los servicios de atención médica</span>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td class="img-cell"><img class="s_img" ></td>
+                            <td>
+                                <span class="person-letter">Socioeconomía: </span><span class="person-desc"> analiza tu situación de vida, finanzas y recursos</span>
+                            </tr>
+                            <tr>
+                            <td class="img-cell"><img class="o_img"></td>
+                            <td>                            
+                                <span class="person-letter">Propiedad: </span><span class="person-desc"> analiza cómo ves tu propia salud y tu capacidad para hacer cambios</span>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td class="img-cell"><img class="n_img"></td>
+                            <td>
+                                
+                                <span class="person-letter">Nutrición y Estilo de Vida: </span><span class="person-desc">analiza tus hábitos de salud</span>
+                            </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="cont-sub">Esta forma y la evaluación de la Salud Integral de la Persona se enviará a un Especialista en Recursos del condado en la agencia con la que está trabajando para una revisión adicional. </div>
+                        <div style="padding: 40px; text-align: center;"><button onclick="intro_click()">Siguiente</button></div>                     
+                        <div id="es_copy_intro" class="copyright">Derechos de Autor © 2016-2024.<br/>
+                            Riverside University Health System. Todos los Derechos Reservados. Ninguna parte de esta publicación puede ser reproducida, distribuida o transmitida en cualquier forma o por cualquier medio, incluyendo fotocopia, grabación u otros métodos electrónicos o mecánicos, sin el permiso previo de el Equipo de Grupo de Trabajo de el Puntaje de Salud de la Persona Completa.</div>                    
+                    </div>
+
+                </div> 
+                <div id="s123_div" style="display: none;"></div>
+                <div id="err_div"></div>
+                <div id="en_ty_div" style="display:none; white-space:pre-line">
+                        <div class="cont-sub">Thank you for completing the Whole Person Health Score. Your responses will be forwarded to a county Resource Specialist in the agency you are working with for further review 
+                            
+                            No additional action is needed from you at this time. 
+                            
+                            Click “Next” to review your results. 
+                            </div>
+                    
+                        
+                        <div class="cont-nav">
+                            <button onclick="tynext_click()" id="btn_ty_en">Next</button>
+                        </div>
+                    
+                </div>
+
+                <div id="es_ty_div" style="display:none; white-space:pre-line">
+                    <div class="cont-sub">Gracias por completar la evaluación de la Salud Integral de la Persona. Sus respuestas se enviarán a un Especialista en Recursos del condado de la agencia con la que está trabajando para una revisión adicional. 
+                        
+                        No es necesario que usted realice ninguna acción adicional en este momento. 
+                        
+                        Presione "Siguiente" para revisar sus resultados. 
+                        </div>
+                
+                    
+                    <div class="cont-nav">
+                        <button onclick="tynext_click()" id="btn_ty_es">Siguiente</button>
+                    </div>
+                
+                </div>
+                <div id="en_sum_div" style="display:none">
+                    <div id="en_sum_content">
+                    <div class="cont-sub">Your whole person health score</div>
+                    <div class="rpt-cont">Your whole person health score is based on your answers to the questions on&nbsp;<span id="en_ts_div">Timestamp</span></div>
+                    <table id="wphs_results">
+                        <tbody>
+                        <tr style="text-align: center; ">
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                        
+                        <div id="en_div_physical_health_letter" style="background-color: #B1D235">D</div>
+                        
+                        </td>
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                        
+                        <div id="en_div_emotional_health_letter" style="background-color: #F3A3A0">R</div>
+                        
+                        </td>
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                        
+                        <div id="en_div_resource_utilization_letter" style="background-color: #FBE48B">O</div>
+                        
+                        </td>
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                        
+                        <div id="en_div_socioeconomics_letter" style="background-color: #B1D235">F</div>
+                        
+                        </td>
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                        
+                        <div id="en_div_ownership_letter" style="background-color: #FBE48B">J</div>
+                        
+                        </td>
+                        <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle;">
+                        
+                        <div id="en_div_nutrition_lifestyle_letter" style="background-color: #FBE48B">K</div>
+                        
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="sum-row"><img class="p_img"></td>
+                        <td class="sum-row"><img class="e_img"></td>
+                        <td class="sum-row"><img class="r_img"></td>
+                        <td class="sum-row"><img class="s_img"></td>
+                        <td class="sum-row"><img class="o_img"></td>
+                        <td class="sum-row"><img class="n_img"></td>
+                        </tr>
+                        <tr id="result_categories">
+                        <td class="sum-row"><span class="person-letter">P</span><span>hysical Health</span></td>
+                        <td class="sum-row"><span class="person-letter">E</span><span>motional Health</span></td>
+                        <td class="sum-row"><span class="person-letter">R</span><span>esource Utilization</span></td>
+                        <td class="sum-row"><span class="person-letter">S</span><span>ocio-economics</span></td>
+                        <td class="sum-row"><span class="person-letter">O</span><span>wnership</span></td>
+                        <td class="sum-row"><span class="person-letter">N</span><span>utrition and Lifestyle</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div class="cont-sub">What do these scores mean?</div>
+                    <div class="rpt-cont">
+                        These six scores are a snapshot of your overall health. Some areas of health are easier to improve than others, but all are important together. Please review these results and recommendations with your physician.
+                    </div>   
+                    <table class="score_ranges">
+                        <tbody>
+                            <tr>
+                                <td>
+                                <div class="wphs-ranges" style="background-color: #B1D235">&nbsp;&nbsp;A-F</div>
+                                </td>
+                                <td class="score_ranges_text" ><span><b>Good:</b> You are doing well in this area of health.</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="background-color: #FBE48B" class="wphs-ranges">&nbsp;&nbsp;G-O</div>
+                                </td>
+                                <td class="score_ranges_text" ><span><b>Fair:</b> This area of health is likely impacting your overall well-being. Consider seeking additional support or help.</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="background-color: #F3A3A0" class="wphs-ranges">&nbsp;&nbsp;P-Z</div>
+                                    </td>
+                                    <td class="score_ranges_text" ><span><b>Needs Improvement:</b> This area of health is already impacting your overall well-being and needs immediate or continued attention.</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <div style="background-color: #DDDDDD" class="wphs-ranges">&nbsp;&nbsp;NS</div>
+                                </td>
+                                <td class="score_ranges_text" ><span><b>Not Scored:</b> A question went unanswered. As a result, a score could not be calculated.</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="cont-nav">
+                        <button onclick="sumprev_click()">Previous</button>
+                        <button onclick="sumnext_click()">Next</button>
+                    </div>
+                </div>
+                <div id="es_sum_div" style="display:none;">
+                    <div id="es_sum_content">
+                        <div class="cont-sub">Tu Puntaje de Salud de la Persona Completa</div>
+                        <div class="rpt-cont">Tu Puntaje de Salud de la Persona Completa se basa en tus respuestas a las preguntas del&nbsp;<span id="es_ts_div">Timestamp</span></div>
+                        
+                        <table style="border: 0; margin: 0; padding: 0; border-collapse: collapse; width: 100%">
+                            <tbody>
+                            <tr style="text-align: center;">
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                            
+                            <div id="es_div_physical_health_letter" style=" text-align: center; background-color: #B1D235">D</div>
+                            
+                            </td>
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                            
+                            <div id="es_div_emotional_health_letter" style="background-color: #F3A3A0">R</div>
+                            
+                            </td>
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                            
+                            <div id="es_div_resource_utilization_letter" style="background-color: #FBE48B">O</div>
+                            
+                            </td>
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                            
+                            <div id="es_div_socioeconomics_letter" style="background-color: #B1D235">F</div>
+                            
+                            </td>
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle; border-right: 1px solid #dddddd;">
+                            
+                            <div id="es_div_ownership_letter" style="background-color: #FBE48B">J</div>
+                            
+                            </td>
+                            <td style="width: 16.66%; font-size: 135%; padding: 10px 5px; vertical-align: middle;">
+                            
+                            <div id="es_div_nutrition_lifestyle_letter" style="background-color: #FBE48B">K</div>
+                            
+                            </td>
+                            </tr>
+                            <tr>
+                            <td class="sum-row"><img src="https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/ff0c8084e9404c9c80f0801a4004efbb/data" style="max-width: 50px; max-height: 50px;" ></td>
+                            <td class="sum-row"><img class="e_img"></td>
+                            <td class="sum-row"><img class="r_img"></td>
+                            <td class="sum-row"><img class="s_img"></td>
+                            <td class="sum-row"><img class="o_img"></td>
+                            <td class="sum-row"><img class="n_img"></td>
+                            </tr>
+                            <tr>
+                            <td class="sum-row"><div>Salud Física</div></td>
+                            <td class="sum-row"><div>Salud Emocional</div></td>
+                            <td class="sum-row"><div>Utilización de Recursos</div></td>
+                            <td class="sum-row"><div>Socioeconomía</div></td>
+                            <td class="sum-row"><div>Propiedad</div></td>
+                            <td class="sum-row"><div>Nutrición y Estilo de Vida</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <div class="cont-sub">¿Qué significan estas puntuaciones?</div>
+                        <div class="rpt-cont">
+                            Estos seis puntajes son una instantánea de tu salud general. Algunas áreas de la salud son más fáciles de mejorar que otras, pero todas juntas son importantes. Por favor de repasar tus resultados y recomendaciones con tu médico.
+                        </div>            
+                        <br/>
+                        <table class="score_ranges">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                    <div class="wphs-ranges" style="background-color: #B1D235">&nbsp;&nbsp;A-F</div>
+                                    </td>
+                                    <td class="score_ranges_text" ><span><b>Bien:</b> Te está yendo bien en esta área de la salud.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="background-color: #FBE48B" class="wphs-ranges">&nbsp;&nbsp;G-O</div>
+                                    </td>
+                                    <td class="score_ranges_text" ><span><b>Razonable:</b> Es probable que esta área de la salud te esté afectando en tu bienestar general. Considera buscar apoyo o ayuda adicional.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="background-color: #F3A3A0" class="wphs-ranges">&nbsp;&nbsp;P-Z</div>
+                                        </td>
+                                        <td class="score_ranges_text" ><span><b>Necesita Mejorar:</b> Esta área de la salud ya te está afectando en tu bienestar general y necesitas atención inmediata o continua.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <div style="background-color: #DDDDDD" class="wphs-ranges">&nbsp;&nbsp;NS</div>
+                                    </td>
+                                    <td class="score_ranges_text" ><span><b>No Anotado:</b> Una pregunta quedó sin respuesta. Y como resultado, no se pudo calcular una puntuación.</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cont-nav">
+                        <button onclick="sumprev_click()">Atras</button>
+                        <button onclick="sumnext_click()">Avanzar</button>
+                    </div>
+                </div>
+
+                <div id="en_res_div" style="display:none">
+                    <div id="en_res_content">
+                        <div class="cont-sub">Where can I address my whole person health needs?</div>
+                        <div class="rpt-cont" style="text-align: justify;">
+                            <div>Now that you know your whole person health score, what areas of health are most important to you? We recommend following-up with the resources listed below. You may also follow up with your primary care provider if you have any health-related questions or concerns.</div>
+                            
+                            <ul>
+                            <li>Physical Health: contact your primary care provider</li>
+                            <li>Emotional Health: contact your behavioral health specialist&nbsp;</li>
+                            <li>Resource Utilization: contact your insurance provider, case manager or care coordinator&nbsp;</li>
+                            <li>Socioeconomics: contact a social worker or social services&nbsp;</li>
+                            <li>Ownership: contact a health coach or dietitian&nbsp;</li>
+                            <li>Nutrition and Lifestyle: contact a dietitian or substance abuse counselor&nbsp;&nbsp;</li>
+                            </ul>
+                            <div style="font-weight: bold;">You can also connect with RUHS for support at (800) 720-9533 or make an appointment at <a href="https://www.ruhealth.org/appointments" target="_blank">https://www.ruhealth.org/appointments</a></div>
+                        </div>
+                    </div>
+                    
+                    <div class="cont-nav">
+                        <button onclick="resprev_click()">Previous</button>
+                        <button onclick="resnext_click()">Next</button></div>
+                </div>
+
+                <div id="es_res_div" style="display:none">
+                    <div id="es_res_content">
+                        <div class="cont-sub">¿Dónde puedo abordar las necesidades de salud de mi persona en su totalidad?</div>
+                        <div class="rpt-cont">
+                            <div style="text-align: justify;">Ahora que conoces tu Puntaje de Salud de la Persona Completa, ¿qué áreas de la salud son más importantes para ti? Recomendamos hacer un seguimiento con los recursos que se enumeran a continuación. También puedes hacer un seguimiento con tu proveedor de atención primaria si tiene alguna pregunta o inquietud relacionada con tu salud.</div>
+                            
+                            <ul>
+                            <li>Salud Física: Pónte en contacto con tu proveedor de atención primaria.</li>
+                            <li>Salud Emocional: Pónte en contacto con un especialista en salud conductual.&nbsp;</li>
+                            <li>Utilización de Recursos: Pónte en contacto con un proveedor de seguros, administrador de casos o coordinador de cuidados.&nbsp;</li>
+                            <li>Socioeconomía: Pónte en contacto con un trabajador social o con la oficina de servicios sociales.&nbsp;</li>
+                            <li>Propiedad: Pónte en contacto con un entrenador de salud o dietista.&nbsp;&nbsp;</li>
+                            <li>Nutrición y Estilo de Vida: Pónte en contacto con un dietista o un consejero de abuso de sustancias.</li>
+                            </ul>
+                            <div style="font-weight: bold;">También puedes conectarte con los servicios de RUHS llamando al (800) 720-9533 o reserva una cita en línea en este sitio web: <a href="https://www.ruhealth.org/appointments" target="_blank">https://www.ruhealth.org/appointments</a></div>
+                        </div>
+                    </div>
+                    <div class="cont-nav">
+                        <button onclick="resprev_click()">Atras</button>
+                        <button onclick="resnext_click()">Avanzar</button></div>
+                </div>
+
+                <div id="wphs_report_div" style="display:none">
+                    <div id="rpt_print_div" class="cont-nav">
+                        <div id="print_caption">Click the button below to print your Whole Person Health Score Report.</div>
+                        <div style="margin-top:10px;"><button id="print_bth" onclick="print_click()">Click here to print</button></div>
+                    </div>                
+                    
+                    <div id="summary_container"></div>
+                    <br/>
+                    <div id="resource_container"></div>
+                    <br/>
+                    <div id="detail_div">
+                        <div id="p_div">
+                            <div class="cat-head"><img class="p_img"><span class="person-letter" id="cat_p">&nbsp;&nbsp;Physical Health</span><br>&nbsp;<br></div>
+                            <span class="survey-ques">Q1.</span> <span id="q_blood_pressure" class="survey-ques">What was your most recent blood pressure?</span>
+                            <div id="div_blood_pressure" class="survey-ans">120</div><br>
+                            <span class="survey-ques">Q2.</span> <span id="q_height" class="survey-ques"></span><br>
+                            <span id="div_feet" class="survey-ans">Feet</span><span class="survey-ans">'&nbsp;</span><span id="div_inches" class="survey-ans">inches</span><span class="survey-ans">"</span><br>
+                            <br>
+                            <span class="survey-ques">Q3.</span> <span id="q_weight" class="survey-ques"></span><br>
+                            <div id="div_weight" class="survey-ans">165</div><br>
+                            <div class="survey-ques" id="q_bmi">BMI</div>
+                            <div id="div_bmi" class="survey-ans">134</div><br>
+                            <span class="survey-ques" class="survey-ans">Q4.</span> <span id="q_diagnosed" class="survey-ques"></span>
+                            <div id="div_diagnosed" class="survey-ans">Cancer</div><br>
+                            <span class="survey-ques" class="survey-ans">Q5.</span> <span id="q_physical_activity" class="survey-ques"></span>
+                            <div id="div_physical_activity" class="survey-ans">A little</div><br>
+                            <br>
+                        </div>
+                        <div id="e_div">
+                            <div class="cat-head"><img class="e_img"><span class="person-letter" id="cat_e">&nbsp;&nbsp;Emotional Health&nbsp;</span></div>
+                            <span class="survey-ques">Q6.</span> <span id="q_feeling_sad" class="survey-ques"></span>
+                            <div id="div_feeling_sad" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q7.</span> <span id="q_feeling_anxious" class="survey-ques"></span><br>
+                            <div id="div_feeling_anxious" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q8.</span> <span id="q_trust_someone" class="survey-ques"></span><br>
+                            <div id="div_trust_someone" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q9.</span> <span id="q_relax_frequency" class="survey-ques"></span><br>
+                            <div id="div_relax_frequency" class="survey-ans"></div><br>                            
+                            <span class="survey-ques">Q10.</span> <span id="q_clear_purpose" class="survey-ques"></span><br>
+                            <div id="div_clear_purpose" class="survey-ans"></div><br>
+                            <br>
+                        </div>
+                        <div id="r_div">
+                            <div class="cat-head"><img class="r_img"><span class="person-letter" id="cat_r">&nbsp;&nbsp;Resource Utilization</span></div>
+                            <span class="survey-ques">Q11.</span> <span id="q_hospitalization" class="survey-ques"></span>
+                            <div id="div_hospitalization" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q12.</span> <span id="q_doctor_visits" class="survey-ques"></span><br>
+                            <div id="div_doctor_visits" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q13.</span> <span id="q_prescriptions" class="survey-ques"></span><br>
+                            <div id="div_prescriptions" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q14.</span> <span id="q_zip_code" class="survey-ques"></span><br>
+                            <div id="div_zip_code" class="survey-ans"></div><br>
+                            <br>
+                        </div>
+                        <div id="s_div">
+                            <div class="cat-head"><img class="s_img"><span class="person-letter" id="cat_s">&nbsp;&nbsp;Socioeconomics</span></div>
+                            <span class="survey-ques">Q15.</span> <span id="q_finances" class="survey-ques"></span><br>
+                            <div id="div_finances" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q16.</span> <span id="q_living_situation" class="survey-ques"></span><br>
+                            <div id="div_living_situation" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q17.</span> <span id="q_education_completed" class="survey-ques"></span><br>
+                            <div id="div_education_completed" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q18.</span> <span id="q_job_status" class="survey-ques"></span><br>
+                            <div id="div_job_status" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q19.</span> <span id="q_food_resources" class="survey-ques"></span><br>
+                            <div id="div_food_resources" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q20.</span> <span id="q_transportation" class="survey-ques"></span><br>
+                            <div id="div_transportation" class="survey-ans"></div><br>
+                            <br>
+                        </div>
+                        <div id="o_div">
+                            <div class="cat-head"><img class="o_img"><span class="person-letter" id="cat_o">&nbsp;&nbsp;Ownership</span></div>
+                            <span class="survey-ques">Q21.</span> <span id="q_general_health" class="survey-ques"></span><br>
+                            <div id="div_general_health" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q22.</span> <span id="q_health_knowledge" class="survey-ques"></span><br>
+                            <div id="div_health_knowledge" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q23.</span> <span id="q_health_confidence" class="survey-ques"></span><br>
+                            <div id="div_health_confidence" class="survey-ans"></div><br>
+                            <span class="survey-ques">Q24.</span> <span id="q_health_tracking" class="survey-ques"></span><br>
+                            <div id="div_health_tracking" class="survey-ans"></div><br>
+                            <br>
+                        </div>
+                        <div id="n_div">
+                            <div class="cat-head"><img class="n_img"><span class="person-letter" id="cat_n">&nbsp;&nbsp;Nutrition and Lifestyle</span></div>
+                                <span class="survey-ques">Q25.</span> <span id="q_eating_habits" class="survey-ques"></span>
+                                <div id="div_eating_habits" class="survey-ans"></div>
+                                <br>
+                                <span class="survey-ques">Q26.</span> <span id="q_freetime_activity" class="survey-ques"></span>
+                                <div id="div_freetime_activity" class="survey-ans"></div><br>
+                                <span class="survey-ques">Q27.</span> <span id="q_sleep_health" class="survey-ques"></span><br>
+                                <div id="div_sleep_health" class="survey-ans"></div><br>
+                                <span class="survey-ques">Q28.</span> <span id="q_cigarette_use" class="survey-ques"></span><br>
+                                <div id="div_cigarette_use" class="survey-ans"></div><br>
+                                <span class="survey-ques">Q29.</span> <span id="q_alcohol_drug_use" class="survey-ques"></span><br>
+                                <div id="div_alcohol_drug_use" class="survey-ans"></div><br>
+                                <br>
+                        </div>
+                    </div>
+                    <div id="div_repnav" class="cont-nav">
+                        <button onclick="wphsprev_click()" id="rpt_prev">Previous</button>
+                        <button id="rpt_close" onclick="close_report()">Close Assessment</button>
+                    </div>
+                </div>
+                <div id="wphs_close_div">
+                    <div id="en_close_div" style="display:none">All done! Thank you for taking the Whole Person Health Score Assessment. You may retake this assessment at any time to see how you are improving your overall health. We hope adding to your health awareness routine will empower you to take action in these areas when you are ready.</div>
+                    <div id="es_close_div" style="display: none;">¡Todo listo! Gracias por completar la Evaluación de Puntaje de Salud de la Persona Completa. Puedes volver a completar esta evaluación en cualquier momento para ver cómo estás mejorando tu salud en general. Esperamos esto sume a tu rutina de concientización sobre la salud y te capacite para tomar medidas en estas áreas cuando esté listo.</div>
+                </div>
+            </div>
+            <div id="copy_div" class="copyright">
+                <br/>
+                <div id="en_copy" style="display: none;">Copyright © 2016-2024. <br/>
+                    Riverside University Health System. </div>
+                <div id="es_copy" style="display: none;">Derechos de Autor © 2016-2024. <br/>
+                    Riverside University Health System.</div>
+            </div>
+        </div>
+
+        <script>
+            let question_lookup = [];
+            let passed_data = {};
+            let rpt_fields = ['blood_pressure','feet','inches', 'weight', 'bmi', 'diagnosed','physical_activity','feeling_sad','feeling_anxious', 
+                                'trust_someone','relax_frequency','clear_purpose','hospitalization','doctor_visits','prescriptions','zip_code',
+                                'finances','living_situation','education_completed','job_status','food_resources','transportation',
+                                'general_health','health_knowledge','health_confidence','health_tracking','eating_habits',
+                                'freetime_activity','sleep_health','cigarette_use','alcohol_drug_use'];
+            let person_fields = ["physical_health_letter", "emotional_health_letter", "resource_utilization_letter", "socioeconomics_letter", "ownership_letter", "nutrition_lifestyle_letter"];
+            let lang_choice = 'English';
+            const en_survey = "3cfbb53d7d38498da317d7d8ffc062b6";// "baa9141d344a43f0852ca5d450c97c47";
+            const es_survey = "3cfbb53d7d38498da317d7d8ffc062b6";// "01d0c231f5264c3cacbb9419834047c0";    
+            const en_portal = "https://isd.countyofriverside.us/portal";
+            const es_portal = "https://isd.countyofriverside.us/portal&lang=es";
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);  
+
+            language_change(lang_choice);
+            window.onmessage = function(e) {
+                console.log('type e.data', typeof e.data);
+                if (typeof e.data === "object" && e.data !== null && "address" in e.data) {
+                    passed_data = e.data;
+                    language_change(passed_data['lang_choice']);
+                    lang_choice = passed_data['lang_choice'];
+                    console.log('passed data:', e.data);
+                }
+            };
+
+            function filter_answer(attr, val, lang){
+                const filter_lang = [{_attr:attr, _val:val, _lang:lang}]
+                const res = answer_lookup.filter(({ attribute, value, lang }) =>
+                    filter_lang.findIndex((answer) => (answer._attr === attribute && answer._val === value && answer._lang === lang)) > -1
+                )
+                lang_ans = res[0]
+                console.log(lang_ans);
+                if(lang_ans.choices && lang_ans.choices.items.length > 0)
+                {
+                    for (var choice in lang_ans.choices.items){
+                        if (choice.value = value){
+                            lang_ans["alias"] = choice.label;
+                        }
+                    }
+                }
+                return lang_ans;
+            }
+
+            function close_report(){
+                hide_content();
+                if (lang_choice=='English'){
+                    document.getElementById('en_close_div').style.display = 'block';
+                } else if (lang_choice=='Spanish'){ 
+                    document.getElementById('es_close_div').style.display = 'block';
+                }
+            }
+
+            function language_change(passed_lang_choice='English'){
+                if (urlParams.get('survey') === 'wphs') {
+                    document.getElementById('lang_sel').style.display = 'block';
+                    lang_choice = document.getElementById("lang_sel").value;
+                    passed_lang_choice = document.getElementById("lang_sel").value;
+                }
+                document.getElementById("s123_div").innerHTML = "";
+                if (passed_lang_choice=='English'){
+                    document.getElementById('en_intro').style.display = 'block';
+                    document.getElementById('es_intro').style.display = 'none';
+                } else if (passed_lang_choice=='Spanish'){ 
+                    document.getElementById('es_intro').style.display = 'block';
+                    document.getElementById('en_intro').style.display = 'none';
+                }
+            }
+
+            function intro_click(){
+                hide_content();
+                document.getElementById('s123_div').style.display = 'block';
+                document.getElementById('logo_div').style.display = 'none';
+                if (lang_choice=='English'){
+                    console.log('english form');
+                    show_wphs_form(en_survey, en_portal); 
+                    document.getElementById("en_copy").style.display = 'block';  
+                    document.getElementById("es_copy").style.display = 'none';         
+                } else if (lang_choice=='Spanish'){
+                    show_wphs_form(es_survey, es_portal);   
+                    document.getElementById("en_copy").style.display = 'none';  
+                    document.getElementById("es_copy").style.display = 'block';                  
+                }
+                document.body.classList.add('scroll');
+            }
+
+            function init_wphs_lang(){
+                if (lang_choice=='English'){    
+                    document.getElementById('en_ty_div').style.display = 'block'; 
+                } else if (lang_choice=='Spanish'){
+                    document.getElementById('es_ty_div').style.display = 'block'; 
+                    
+                }
+                document.body.classList.remove('scroll');
+                document.getElementById('logo_div').style.display = 'flex';
+
+            }
+
+            function print_click(){
+                document.getElementById('rpt_print_div').style.display = 'none'; 
+                document.getElementById('lang_sel').style.display = 'none';
+                document.getElementById('div_repnav').style.display = 'none';
+                window.print(); 
+                document.getElementById('lang_sel').style.display = 'block'
+                document.getElementById('rpt_print_div').style.display = 'block';
+                document.getElementById('div_repnav').style.display = 'block';
+            }
+
+            function hide_content(){
+                document.getElementById('intro_div').style.display = 'none';
+                document.getElementById('en_ty_div').style.display = 'none'; 
+                document.getElementById('es_ty_div').style.display = 'none'; 
+                document.getElementById('en_sum_div').style.display = 'none'; 
+                document.getElementById('es_sum_div').style.display = 'none'; 
+                document.getElementById('en_res_div').style.display = 'none'; 
+                document.getElementById('es_res_div').style.display = 'none'; 
+                document.getElementById('wphs_report_div').style.display = 'none'; 
+                document.getElementById('rpt_print_div').style.display = 'none'; 
+                document.getElementById('detail_div').style.display = 'none'; 
+                document.getElementById('es_close_div').style.display = 'none';
+                document.getElementById('en_close_div').style.display = 'none';
+                document.getElementById('summary_container').innerHTML = '&nbsp;'; 
+                document.getElementById('resource_container').innerHTML = '&nbsp;'; 
+            }
+
+            function show_content(section){
+                hide_content()
+                switch(section){
+                    case 'thanks':
+                        if (lang_choice=='English'){
+                            document.getElementById('en_ty_div').style.display = 'block'; 
+                        } else if (lang_choice=='Spanish'){
+                            document.getElementById('es_ty_div').style.display = 'block'; 
+                        }
+                        break;
+                    case 'summary':
+                        if (lang_choice=='English'){
+                            document.getElementById('en_sum_div').style.display = 'block'; 
+                        } else if (lang_choice=='Spanish'){
+                            document.getElementById('es_sum_div').style.display = 'block'; 
+                        }
+                        break;
+                    case 'resources':
+                        if (lang_choice=='English'){
+                            document.getElementById('en_res_div').style.display = 'block'; 
+                        } else if (lang_choice=='Spanish'){
+                            document.getElementById('es_res_div').style.display = 'block'; 
+                        }
+                        break;
+                    case 'report':
+                            document.getElementById('wphs_report_div').style.display = 'block'; 
+                            document.getElementById('rpt_print_div').style.display = 'block'; 
+                            document.getElementById('detail_div').style.display = 'block'; 
+                        if (lang_choice=='English'){
+                            document.getElementById('summary_container').innerHTML = document.getElementById('en_sum_content').innerHTML ; 
+                            document.getElementById('resource_container').innerHTML = document.getElementById('en_res_content').innerHTML ; 
+                            document.getElementById('print_caption').innerText = 'Click the button below to print your Whole Person Health Score Report.'; 
+                            document.getElementById('print_bth').innerText = 'Click here to print'; 
+                            document.getElementById('cat_p').innerText = 'Physical Health'; 
+                            document.getElementById('cat_e').innerText = 'Emotional Health'; 
+                            document.getElementById('cat_r').innerText = 'Resource Utilization'; 
+                            document.getElementById('cat_s').innerText = 'Socio-economics'; 
+                            document.getElementById('cat_o').innerText = 'Ownership';
+                            document.getElementById('cat_n').innerText = 'Nutrition and Lifestyle';
+                            document.getElementById('q_height').innerText = "What is your height?"; 
+                            document.getElementById('rpt_prev').innerText = "Previous";
+                            document.getElementById('rpt_close').innerText = "Close Assessment";
+                        } else if (lang_choice=='Spanish'){
+                            document.getElementById('summary_container').innerHTML = document.getElementById('es_sum_content').innerHTML ; 
+                            document.getElementById('resource_container').innerHTML = document.getElementById('es_res_content').innerHTML ; 
+                            document.getElementById('print_caption').innerText = 'Para imprimir tu Informe de Puntaje de Salud de Persona Completa, haz clic en el botón de abajo.'; 
+                            document.getElementById('print_bth').innerText = 'Haga clic en el botón para imprimir';  
+                            document.getElementById('cat_p').innerText = 'Salud Física'; 
+                            document.getElementById('cat_e').innerText = 'Salud Emocional'; 
+                            document.getElementById('cat_r').innerText = 'Utilización de Recursos'; 
+                            document.getElementById('cat_s').innerText = 'Socioeconomía'; 
+                            document.getElementById('cat_o').innerText = 'Propiedad'; 
+                            document.getElementById('cat_n').innerText = 'Nutrición y Estilo de Vida';
+                            document.getElementById('q_height').innerText = "¿Qué estatura tiene?";
+                            document.getElementById('rpt_prev').innerText = "Atrás";
+                            document.getElementById('rpt_close').innerText = "Cerrar Resultados de la Evaluación";
+                        }
+                        break;
+                }
+
+            }
+    
+            function tynext_click() {
+                show_content("summary");
+            }
+    
+            function sumnext_click() {
+                show_content("resources");
+            }
+    
+            function sumprev_click() {
+                show_content("thanks");
+            }
+    
+            function resprev_click() {
+                show_content("summary");
+            }
+            
+            function resnext_click() {
+                show_content("report");
+            }
+    
+            function wphsprev_click() {
+                show_content("resources");
+            }
+
+            function decode_color(score){
+                var green_letters = "ABCDEF";
+                var yellow_letters = "GHIJKLMNO";
+                var red_letters = "PQRSTUVWXYZ";
+                var green_hex = "#B1D235" ;
+                var yellow_hex = "#FBE48B";
+                var red_hex = "#F3A3A0" ;
+                var ns_hex = "#DDDDDD" ;
+                if (green_letters.includes(score)){
+                    return green_hex;
+                } else if (yellow_letters.includes(score)){
+                    return yellow_hex;
+                } else if (red_letters.includes(score)){
+                    return red_hex;
+                } else {
+                    return ns_hex;
+                } 
+            }
+            
+            function filter_question(attr){
+                //
+                const filter_question = [{_fieldName:attr}]
+                const res = question_lookup.filter(({fieldName}) =>
+                    filter_question.findIndex((q_item) => (q_item._fieldName === fieldName)) > -1
+                )
+                filtered_q = res[0]
+                return filtered_q;
+            }
+
+            function choice_label(choices, value){
+                var label = value;
+                if(value){
+                    choices.forEach(function (choice, index) {
+                        if (choice.value == value){
+                            label =  choice.label;
+                        }
+                    });
+                }
+                return label;
+            }
+
+            function lookup_choice_label(question, value){
+                var label = value
+                if(question.hasOwnProperty("choices") && value ){
+                    choices = question.choices;
+                    choices.items.forEach(function (choice, index) {
+                        if (choice.value == value){
+                            label =  choice.label;
+                        }
+                    });
+                }
+                return label;
+            }
+
+            function concat_labels(question, values){
+                result = [];
+                if(question.hasOwnProperty("choices") && values){
+                    choices = question.choices;
+                    values.split(',').forEach(function (value, idx){
+                        choices.items.forEach(function (choice, index) {
+                            if (choice.value == value.trim()){
+                                result.push(choice.label);
+                            }
+                        });
+                    });
+                }
+                if (result.length > 0){
+                    return result.join(', ')
+                } else {
+                    return values;
+                }
+            }
+
+            function show_wphs_form(surveyid, portal_lang_url){
+                //s123 javascript api
+                if (passed_data['race'] && passed_data['race'] == 'other'){
+                    passed_data['race'] = passed_data['race_other']
+                }
+                if (passed_data['gender'] && passed_data['gender'] == 'other'){
+                    passed_data['gender'] = passed_data['gender_other']
+                }
+                let webform = new Survey123WebForm({
+                //clientId: "8zezxvMvsA0YBq44",
+                clientId:"WIoCMXZwRARVWMGW",
+                container: "s123_div",
+                portalUrl: portal_lang_url,
+                //portalUrl:"https://wadcportal.esri.com/portal",
+                itemId: surveyid,
+
+                onFormLoaded:(data) =>{
+                    console.log('language', passed_data['language'])
+                    console.log('loc', urlParams.get('loc'));
+                    webform.setQuestionValue({
+                        'first_name': passed_data['first_name'],
+                        'last_name': passed_data['last_name'],
+                        'dob': passed_data['dob'],
+                        'phone': passed_data['phone'],
+                        'email': passed_data['email'] || '',
+                        'address': passed_data['address'] || '',
+                        'department': passed_data['department'],
+                        'survey_location': passed_data['survey_location'] || urlParams.get('loc') || '',
+                        'survey_location_other': passed_data['survey_location_other'],
+                        'race': passed_data['race'] || passed_data['race_other'] || '',
+                        'gender': passed_data['gender'] || passed_data['gender_other'] || '',
+                        'ethnicity': passed_data['ethnicity'],
+                        'language': passed_data['language'],
+                        'sex_birth': passed_data['sex_birth'],
+                        'other_language': passed_data['other_language'],
+                        'patient_id': passed_data['patient_id'],
+                        'globalid': passed_data['disclosure_globalid'],
+                        'WPHS_addresses': [{
+                            'service_address': {
+                                x: passed_data['x'] || '',
+                                y: passed_data['y'] || '',
+                                spatialReference: {
+                                    wkid: passed_data['spatial_ref'] || ''
+                                }
+                            }
+                        }]
+                    });
+                    question_lookup = []
+                    console.log('wphs questions', data.form.questions)
+                    data.form.questions.forEach(function (form_question, index) {
+                        //question_lookup = question_lookup.concat(wphs_ques.questions);
+                        form_question.questions.forEach(function(wphs_question){
+                            if (rpt_fields.includes(wphs_question.fieldName)){
+                                question_lookup.push(wphs_question);
+                            }
+                        });
+                    });
+                    console.log(question_lookup);
+                    console.log('getQuestions', webform.getQuestions());
+                },
+
+                onFormSubmitted: (result) => {
+                    console.log('result below');
+                    console.log(result);
+                    let ts = new Date().toLocaleString();
+                    document.getElementById('en_ts_div').innerText  = ts; 
+                    document.getElementById('es_ts_div').innerText  = ts;
+                    if (result.error && result.error.message){
+                        console.log(result.error.message);
+
+                    } else if (result.surveyFeatureSet){       
+
+                        let wphs_response = result.surveyFeatureSet.features[0].attributes;
+                        console.log('wphs response');
+                        console.log(wphs_response);
+                        if(wphs_response['age'] === '18_over') {
+                            document.getElementById('s123_div').style.display = 'none'; 
+                        
+                            rpt_fields.forEach(function (attr, index) {
+                                //console.log(attr);
+                                question = filter_question(attr);
+                                if(! question){
+                                    consloe.log("question for" + attr + "not found")
+                                } else { 
+                                    console.log(question)
+                                    switch(attr){
+                                        case "feet":
+                                        case "inches":
+                                            document.getElementById('div_' + attr).innerText = lookup_choice_label(question, wphs_response[attr]); 
+                                            break;
+                                        case "diagnosed":
+                                            document.getElementById('q_' + attr).innerText = question.label; 
+                                            document.getElementById('div_' + attr).innerText = concat_labels(question, wphs_response[attr]); 
+                                            break;
+                                        default:
+                                            document.getElementById('q_' + attr).innerText = question.label; 
+                                            document.getElementById('div_' + attr).innerText = lookup_choice_label(question, wphs_response[attr]); 
+                                            break;
+                                    }
+                                }
+                            
+                            });
+
+                            person_fields.forEach(function(attr){
+                                var letter_score = wphs_response[attr]
+                                var bg_color = decode_color(letter_score);
+                                console.log(attr + ": " + letter_score + "; background: " + bg_color);
+                                document.getElementById("en_div_" + attr).style.backgroundColor = bg_color;
+                                document.getElementById("es_div_" + attr).style.backgroundColor = bg_color;
+                                document.getElementById("en_div_" + attr).innerText = letter_score
+                                document.getElementById("es_div_" + attr).innerText = letter_score
+
+                            });
+                            init_wphs_lang();
+                        }
+                    } else{
+                        console.warn("WPHS survey was incorrectly submitted. Please retry");
+                    }                   
+                }
+            });
+
+            }           
+            
+        </script>
+    </body>
+</html>

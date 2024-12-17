@@ -1,0 +1,289 @@
+
+.brdr{
+    border-color: #F3A3A0; border-style:solid;border-width: thin;
+}
+
+#discauth_container {
+    max-width: 100%;
+    height: 100%;
+ } 
+
+ #form_results_container {
+    height: 100%;
+ } 
+
+.person-letter{
+    font-weight: bold;
+    font-size:2em;
+    width: fit-content;
+}
+
+.person-desc{
+    font-size:1.9em;
+    width:auto;
+}
+
+.copyright{
+    font-size: 22px;
+    text-align: center;
+}
+#intro_div{
+    padding: 20px;
+    margin: 7%;
+    text-align: center;
+}
+#lang_sel {
+    font-size: 40px; /* Increase font size */
+    padding: 5px;
+    margin: 0 auto;
+    height: auto; /* Ensure the height is auto to fit the content */
+    display: block;
+    overflow-y: auto;
+    border: 1px solid black;
+}
+#lang_sel option {
+    font-size: 15px; /* Adjust the font size of the dropdown options */
+    padding: 3px; /* Adjust the padding of the dropdown options */
+}
+.cont-head{
+    font-weight: bold;
+    font-size: 3.1em;
+    color: black;
+
+}
+.cont-sub{
+    font-size: 2.0em;
+    color: black;
+
+}
+.three_steps {
+    width: 100%;
+    border-collapse: separate; /* Use separate borders to apply border-spacing */
+    border-spacing: 10px 0; /* Adjust the spacing value as needed */
+    table-layout: fixed;
+}
+
+.three_steps th, .three_steps td {
+    padding: 10px;
+    text-align: center;
+    width: 33.33%;
+}
+
+.three_steps tr:nth-child(1) th {
+    background-color: #3A3A8B; /* Dark blue background */
+    color: white; /* White text */
+    font-weight: bolder;
+    font-size: 2.0em;
+    border: 3px solid black;
+}
+
+.three_steps tr:nth-child(2) {
+    background-color: #9C9CC5; /* Light blue background */
+    color: white; /* White text */
+    font-weight: normal;
+    font-size: 2.0em;
+}
+.rpt-cont{
+    padding-top: 20px;
+    font-size:0.8em;
+    word-wrap:break-word;
+
+}
+#logo_div{
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+#logo_div > img {
+    max-height: 190px;
+    width: auto;
+ }
+ 
+.logo_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/eb07ec59dc1447809be16a384eff8a19/data");
+    max-height: 90px;
+width: auto;
+}
+
+.p_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/ff0c8084e9404c9c80f0801a4004efbb/data");
+    width: 60px; 
+    height: 57px;
+}
+
+.e_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/f05db69e2b2a4dd39e42385a56935bb2/data");
+    width: 60px; 
+    height: 49px;
+}
+
+.r_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/ca78da217f174a8c9e692f773c44f84e/data");
+    width: 60px; 
+    height: 57px;
+}
+
+.s_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/bb709c17566546908986b9b6130f4653/data");
+    width: 34px; 
+    height: 57px;
+}
+
+.o_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/17c08575dc034870b03257e7e46c8327/data");
+    width: 60px; 
+    height: 27px;
+}
+
+.n_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/a453d9129c46417ea64dea3fde2dc3b7/data");
+    width: 36px; 
+    height: 57px;
+}
+
+.img-cell {
+    height: 80px;
+    width:70px;
+    text-align: center;
+    border-color: #F3A3A0; border-style:none;border-width: thin;
+}
+
+.img-row{
+    height: 60px;
+    width:70px;
+    text-align: center;
+}
+
+.survey-ques{
+    font-size: 0.7em;
+    font-weight: bold;
+    width:fit-content;
+}
+
+.survey-ans{
+    font-size: 0.7em;
+    width:fit-content;
+}
+
+.discauth-tbl{
+    width:100%;
+    border-collapse:collapse;
+    margin: 16px 0px;
+}
+
+.sum-row{
+    width: 16.66%; 
+    font-size: 1.1em; 
+    padding: 10px 5px; 
+    text-align: center;
+    vertical-align: middle; 
+    border-right: 1px solid #dddddd;
+}
+
+.cont-nav{
+    text-align: center;
+    padding: 24px;
+}
+
+.discauth-ranges{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ltr-exp{
+    font-weight: bold;
+    margin: 10px;
+    text-align: justify;
+}
+.cat-head{
+    width: fit-content;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.close-out{
+    font-size: smaller;
+}
+
+#intro_div {
+    padding: 24px 0px;
+}
+.intro_div_langs{
+    padding-top: 24px;;
+}
+#s123_div {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#s123_div > iframe {
+    width: 40% !important;
+    height: 40% !important;
+    -webkit-transform: scale(2.5);
+    transform: scale(2.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    background-size: inherit;
+}
+#err_div {
+    padding: 4px 0px;
+}
+#en_ty_div {
+    padding: 24px 0px;
+}
+#es_ty_div {
+    padding: 24px 0px;
+}
+#en_sum_div {
+    padding: 24px 0px;
+}
+#es_sum_div {
+    padding: 24px 0px;
+}
+#en_res_div {
+    padding: 24px 0px;
+}
+#es_res_div {
+    padding: 24px 0px;
+}
+#discauth_report_div {
+    padding: 24px 0px;
+}
+
+button {
+    /* text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none; */
+    margin: 0;
+    background-color: #09356a;
+    border: 1px solid #09356a;
+    color: #fff;
+    line-height: 40px;
+    font-size: 30px;
+    padding: 20px 50px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    margin: 0;
+    background-color: #ffffff;
+    border: 1px solid #09356a;
+    color: #09356a;
+    cursor: pointer;
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+}

@@ -1,0 +1,445 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" media="screen and (min-device-width: 769px)" href="large.css">
+        <link rel="stylesheet" media="screen and (min-device-width: 481px) and (max-device-width: 768px)" href="mobile.css">
+        <link rel="stylesheet" media="print and (min-device-width: 769px)" href="large.css">
+        <link rel="stylesheet" media="print and (min-device-width: 481px) and (max-device-width: 768px)" href="mobile.css">
+        <link rel="stylesheet" media="print and (max-device-width: 481px)" href="mobile.css">
+        <link rel="stylesheet" media="screen and (max-device-width: 481px)" href="mobile.css">
+        <script src="https://survey123.arcgis.com/api/jsapi/"></script>
+        <script src="https://js.arcgis.com/4.29/"></script>
+    </head>
+    <style>
+
+        </style>
+    <body>        
+        <div id="discauth_container">
+            <div id="logo_div" style="width: 100%;">
+                <img class="logo_img"/>
+            </div>
+            <div id="form_results_container">
+                <div style="text-align: left;" id="intro_div">
+                    <div class="select-container">
+                        <select id="lang_sel" onchange="language_change()">        
+                            <option value="English" selected>English</option>
+                            <option value="Spanish">Español (América Latina)</option>
+                        </select>
+                    </div>
+                    <div id="en_intro" style="white-space: pre-line" class="intro_div_langs">
+                        <div class="cont-head">Riverside County has many agencies that can offer you help.</div><br/>
+                        <div class="cont-sub">The Universal Registration Form is a set of forms and questions that can determine your eligibility for public programs, connect you to resources, and help you better understand your overall well-being. After you complete the form, a Resource Specialist will follow-up with you to help you find services that will be the most helpful for you and make sure you are receiving the help you need. 
+                            
+                            There are three steps to filling out the form, which should take approximately 15 minutes to complete:
+                            </div><br/> 
+                        <table class="three_steps">
+                            <tr>
+                                <th>Step 1: Disclosure Authorization</th>
+                                <th>Step 2: Demographics</th>
+                                <th>Step 3: Whole Person Health Score </th>
+                            </tr>
+                            <tr>
+                                <td>To connect you with services, please select which County Agencies we have permission to share your information with.</td>
+                                <td>This information will help determine your eligibility for various public programs.</td>
+                                <td>This information will help you identify your needs,  and connect you to the right services.</td>
+                            </tr>
+                        </table>
+                        <div class="cont-sub">Once the form is complete, a Resource Specialist will follow-up with you to discuss your results. 
+
+                            Click "Next" to continue. 
+                        </div>
+                        <div style="padding: 40px; text-align: center;"><button onclick="intro_click()">Next</button></div>                     
+                        <div id="en_copy_intro" class="copyright">Copyright © 2016-2024.<br/>
+                            Riverside University Health System. All Rights Reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior permission of the Whole Person Health Score Workgroup Team.</div>                    
+                    </div>
+                    <div id="es_intro" style="white-space: pre-line" class="intro_div_langs">
+                        <div class="cont-head">El Condado de Riverside tiene varias agencias que pueden ofrecerte ayuda.</div><br/>
+                        <div class="cont-sub">El Formulario de Registro Universal tiene preguntas para determinar tu elegibilidad a programas públicos, conectarte con recursos y entender tu bienestar. Después de completar el formulario, un Especialista en Recursos te ayudará a encontrar servicios y asegurarse de que recibas la ayuda que necesitas.
+                            
+                            Hay tres pasos para completar el formulario, que deberían tomar aproximadamente 15 minutos:
+                            </div><br/> 
+                        <table class="three_steps">
+                            <tr>
+                                <th>Paso 1: Autorización de Divulgación</th>
+                                <th>Paso 2: Información Demográfica</th>
+                                <th>Paso 3: Puntuación de Salud </th>
+                            </tr>
+                            <tr>
+                                <td>Para conectarte con servicios, selecciona con qué Agencias del Condado tenemos permiso para compartir tu información.</td>
+                                <td>Esta información ayudará a determinar tu elegibilidad para varios programas públicos.</td>
+                                <td>Esta información te ayudará a identificar tus necesidades y conectarte con los servicios adecuados.</td>
+                            </tr>
+                        </table>
+                        <div class="cont-sub">Una vez que completes el formulario, un Especialista en Recursos se comunicará contigo para hablar sobre tus resultados. 
+
+                            Presione "Siguiente" para continuar. 
+                        </div>
+                        <div style="padding: 40px; text-align: center;"><button onclick="intro_click()">Siguiente</button></div>                     
+                        <div id="es_copy_intro" class="copyright">Derechos de Autor © 2016-2024.<br/>
+                            Riverside University Health System. Todos los Derechos Reservados. Ninguna parte de esta publicación puede ser reproducida, distribuida o transmitida en cualquier forma o por cualquier medio, incluyendo fotocopia, grabación u otros métodos electrónicos o mecánicos, sin el permiso previo de el Equipo de Grupo de Trabajo de el Puntaje de Salud de la Persona Completa.</div>                    
+                    </div>
+                </div> 
+                <div id="s123_div" style="display: none;"></div>
+                <div id="err_div"></div>
+                <div id="en_ty_div" style="display:none; white-space:pre-line">
+                        <div class="cont-sub">Thank you for completing the ISD Universal Registration Form: Disclosure Authorizations. Please continue to complete the whole person health score assessment. 
+                            
+                            Click "Next" to continue.
+                            </div>
+                        <div class="cont-nav">
+                            <button onclick="tynext_click()" id="btn_ty_en">Next</button>
+                        </div>
+                    
+                </div>
+
+                <div id="es_ty_div" style="display:none; white-space:pre-line">
+                    <div class="cont-sub">Gracias por completar el Formulario de Registro Universal de ISD: Autorizaciones de Divulgación. Continúe completando la evaluación de la Salud Integral de la Persona. 
+                            
+                        Presione "Siguiente" para continuar.
+                        </div>
+                    <div class="cont-nav">
+                        <button onclick="tynext_click()" id="btn_ty_en">Siguiente</button>
+                    </div>
+
+                </div>
+                <div id="en_ty_div_nowphs" style="display:none; white-space:pre-line; justify-content: center">
+                    <div class="cont-sub">Thank you for completing the ISD Universal Registration Form: Disclosure Authorizations. </div>
+                </div>
+                <div id="es_ty_div_nowphs" style="display:none; white-space:pre-line; justify-content: center">
+                    <div class="cont-sub">Gracias por completar el Formulario de Registro Universal de ISD: Autorizaciones de Divulgación. </div>
+                </div>
+                
+                <div id="discauth_report_div" style="display:none">
+                    <div id="rpt_print_div" class="cont-nav">
+                        <div id="print_caption">Click the button below to print your Whole Person Health Score Report.</div>
+                        <div style="margin-top:10px;"><button id="print_bth" onclick="print_click()">Click here to print</button></div>
+                    </div>                
+                    
+                    <div id="summary_container"></div>
+                    <br/>
+                    <div id="resource_container"></div>
+                    <br/>
+                    
+                    <div id="div_repnav" class="cont-nav">
+                        <button onclick="discauthprev_click()" id="rpt_prev">Previous</button>
+                        <button id="rpt_close" onclick="close_report()">Close Assessment</button>
+                    </div>
+                </div>
+                <div id="discauth_close_div">
+                    <div id="en_close_div" style="display:none">All done! Thank you for taking the Whole Person Health Score Assessment. You may retake this assessment at any time to see how you are improving your overall health. We hope adding to your health awareness routine will empower you to take action in these areas when you are ready.</div>
+                    <div id="es_close_div" style="display: none;">¡Todo listo! Gracias por completar la Evaluación de Puntaje de Salud de la Persona Completa. Puedes volver a completar esta evaluación en cualquier momento para ver cómo estás mejorando tu salud en general. Esperamos esto sume a tu rutina de concientización sobre la salud y te capacite para tomar medidas en estas áreas cuando esté listo.</div>
+                </div>
+            </div>
+            <div id="copy_div" class="copyright">
+                <br/>
+                <div id="en_copy" style="display: none;">Copyright © 2016-2024. <br/>
+                    Riverside University Health System. </div>
+                <div id="es_copy" style="display: none;">Derechos de Autor © 2016-2024. <br/>
+                    Riverside University Health System.</div>
+            </div>
+        </div>
+
+        <script>
+            let question_lookup = [];
+            let pass_fields = ['first_name','last_name','dob', 'phone', 'email', 'address', 'department', 'survey_location', 'survey_location_other', 'race','gender','ethnicity', 'language', 'sex_birth']; // these fields get prefilled in the wphs form
+            let lang_choice = 'English';
+            const en_survey = "3c245476a87c410fb5a8e82d3a79d001";// "baa9141d344a43f0852ca5d450c97c47";            https://survey123.arcgis.com/share/90440f490c5944ffbd83c3c4db5e2a64?portalUrl=https://wphs-portal.esri.com/portal 
+            const es_survey = "3c245476a87c410fb5a8e82d3a79d001";// "01d0c231f5264c3cacbb9419834047c0";    
+            const en_portal = "https://isd.countyofriverside.us/portal";
+            const es_portal = "https://isd.countyofriverside.us/portal&lang=es"; 
+            let discauth_response = {};
+  
+
+            language_change();
+            function filter_answer(attr, val, lang){
+                const filter_lang = [{_attr:attr, _val:val, _lang:lang}]
+                const res = answer_lookup.filter(({ attribute, value, lang }) =>
+                    filter_lang.findIndex((answer) => (answer._attr === attribute && answer._val === value && answer._lang === lang)) > -1
+                )
+                lang_ans = res[0]
+                console.log(lang_ans);
+                if(lang_ans.choices && lang_ans.choices.items.length > 0)
+                {
+                    for (var choice in lang_ans.choices.items){
+                        if (choice.value = value){
+                            lang_ans["alias"] = choice.label;
+                        }
+                    }
+                }
+                return lang_ans;
+            }
+
+            function close_report(){
+                hide_content();
+                if (lang_choice=='English'){
+                    document.getElementById('en_close_div').style.display = 'block';
+                } else if (lang_choice=='Spanish'){ 
+                    document.getElementById('es_close_div').style.display = 'block';
+                }
+            }
+
+            function language_change(){
+                lang_choice = document.getElementById("lang_sel").value;
+                document.getElementById("s123_div").innerHTML = "";
+                if (lang_choice=='English'){
+                    document.getElementById('en_intro').style.display = 'block';
+                    document.getElementById('es_intro').style.display = 'none';
+                } else if (lang_choice=='Spanish'){ 
+                    document.getElementById('es_intro').style.display = 'block';
+                    document.getElementById('en_intro').style.display = 'none';
+                }
+            }
+
+            function intro_click(){
+                hide_content();
+                document.getElementById('s123_div').style.display = 'block';
+                document.getElementById('logo_div').style.display = 'none';
+                if (lang_choice=='English'){
+                    show_discauth_form(en_survey, en_portal); 
+                    document.getElementById("en_copy").style.display = 'block';  
+                    document.getElementById("es_copy").style.display = 'none';         
+                } else if (lang_choice=='Spanish'){
+                    show_discauth_form(es_survey, es_portal);   
+                    document.getElementById("en_copy").style.display = 'none';  
+                    document.getElementById("es_copy").style.display = 'block';                  
+                }
+                document.body.classList.add('scroll');
+            }
+
+            function init_discauth_lang(){
+                let discauth_only = false;
+                const queryString_1 = window.location.search;
+                console.log('querystring', queryString_1);
+                const urlParams_1 = new URLSearchParams(queryString_1);
+                console.log('urlParams', urlParams_1);
+                if (urlParams_1.get('survey') === 'disclosure') {
+                    discauth_only = true;
+                    console.log('Disc Auth Only');
+                }
+                if (lang_choice=='English'){    
+                    if(discauth_only){
+                        console.log('nowphs');
+                        document.getElementById('en_ty_div_nowphs').style.display = 'flex';
+                    } else {
+                        document.getElementById('en_ty_div').style.display = 'block'; 
+                        console.log('where are we here');
+                        console.log(discauth_only);
+                    }
+                } else if (lang_choice=='Spanish'){
+                    if(discauth_only){
+                        document.getElementById('es_ty_div_nowphs').style.display = 'flex'; 
+                    } else {
+                        document.getElementById('es_ty_div').style.display = 'block';  
+                    }                   
+                }
+                document.getElementById('logo_div').style.display = 'flex';
+                document.body.classList.remove('scroll');
+
+            }
+
+            function print_click(){
+                document.getElementById('rpt_print_div').style.display = 'none'; 
+                document.getElementById('lang_sel').style.display = 'none';
+                document.getElementById('div_repnav').style.display = 'none';
+                window.print(); 
+                document.getElementById('lang_sel').style.display = 'block'
+                document.getElementById('rpt_print_div').style.display = 'block';
+                document.getElementById('div_repnav').style.display = 'block';
+            }
+
+            function hide_content(){
+                document.getElementById('intro_div').style.display = 'none';
+                document.getElementById('en_ty_div').style.display = 'none'; 
+                document.getElementById('es_ty_div').style.display = 'none'; 
+                document.getElementById('en_ty_div_nowphs').style.display = 'none'; 
+                document.getElementById('es_ty_div_nowphs').style.display = 'none'; 
+                document.getElementById('discauth_report_div').style.display = 'none'; 
+                document.getElementById('rpt_print_div').style.display = 'none'; 
+                document.getElementById('es_close_div').style.display = 'none';
+                document.getElementById('en_close_div').style.display = 'none';
+                document.getElementById('summary_container').innerHTML = '&nbsp;'; 
+                document.getElementById('resource_container').innerHTML = '&nbsp;'; 
+            }
+
+    
+            function tynext_click() {
+                // window.parent.document.getElementById('disclosureauth_parent').style.display = 'none';
+                // window.parent.document.getElementById('wphs_parent').style.display = 'block'; 
+                window.top.postMessage(discauth_response, '*'); 
+            }
+    
+            function sumnext_click() {
+                show_content("resources");
+            }
+    
+            function sumprev_click() {
+                show_content("thanks");
+            }
+    
+            function resprev_click() {
+                show_content("summary");
+            }
+            
+            function resnext_click() {
+                show_content("report");
+            }
+    
+            function discauthprev_click() {
+                show_content("resources");
+            }
+
+            function decode_color(score){
+                var green_letters = "ABCDEF";
+                var yellow_letters = "GHIJKLMNO";
+                var red_letters = "PQRSTUVWXYZ";
+                var green_hex = "#B1D235" ;
+                var yellow_hex = "#FBE48B";
+                var red_hex = "#F3A3A0" ;
+                var ns_hex = "#DDDDDD" ;
+                if (green_letters.includes(score)){
+                    return green_hex;
+                } else if (yellow_letters.includes(score)){
+                    return yellow_hex;
+                } else if (red_letters.includes(score)){
+                    return red_hex;
+                } else {
+                    return ns_hex;
+                } 
+            }
+            
+            function filter_question(attr){
+                //
+                const filter_question = [{_fieldName:attr}]
+                const res = question_lookup.filter(({fieldName}) =>
+                    filter_question.findIndex((q_item) => (q_item._fieldName === fieldName)) > -1
+                )
+                filtered_q = res[0]
+                return filtered_q;
+            }
+
+            function choice_label(choices, value){
+                var label = value;
+                if(value){
+                    choices.forEach(function (choice, index) {
+                        if (choice.value == value){
+                            label =  choice.label;
+                        }
+                    });
+                }
+                return label;
+            }
+
+            function lookup_choice_label(question, value){
+                var label = value
+                if(question.hasOwnProperty("choices") && value ){
+                    choices = question.choices;
+                    choices.items.forEach(function (choice, index) {
+                        if (choice.value == value){
+                            label =  choice.label;
+                        }
+                    });
+                }
+                return label;
+            }
+
+            function concat_labels(question, values){
+                result = [];
+                if(question.hasOwnProperty("choices") && values){
+                    choices = question.choices;
+                    values.split(',').forEach(function (value, idx){
+                        choices.items.forEach(function (choice, index) {
+                            if (choice.value == value.trim()){
+                                result.push(choice.label);
+                            }
+                        });
+                    });
+                }
+                if (result.length > 0){
+                    return result.join(', ')
+                } else {
+                    return values;
+                }
+            }
+
+            let resizeWebform = (height) => {
+                let webformIframe = document.querySelector('#s123_div>iframe');
+                //console.log('resizing web form');
+                //if (webformIframe && height > 0) {
+                //  webformIframe.style.height = height + 'px';
+                //}
+            }
+
+            function show_discauth_form(surveyid, portal_lang_url){
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                let partner_link = false;
+                if (urlParams.has('loc')){
+                    console.log('United Way Found');
+                    partner_link = true;
+                }
+                //s123 javascript api
+                let webform = new Survey123WebForm({
+                //clientId: "8zezxvMvsA0YBq44",
+                clientId:"WIoCMXZwRARVWMGW",
+                container: "s123_div",
+                portalUrl: portal_lang_url,
+                //portalUrl:"https://wadcportal.esri.com/portal",
+                itemId: surveyid,
+                width: window.screen.width,
+                version: 'latest',
+
+                onFormLoaded:(data) =>{
+                    if (partner_link){
+                        webform.setQuestionValue({
+                            'survey_location': urlParams.get('loc')
+                        });
+                    }
+                    question_lookup = []
+                    console.log(data.form.questions)
+                    resizeWebform(data.contentHeight);
+                    // try{
+                    //     data.form.questions.forEach(function (form_question, index) {
+                    //         //question_lookup = question_lookup.concat(discauth_ques.questions);
+                    //         form_question.questions.forEach(function(discauth_question){
+                    //             if (pass_fields.includes(discauth_question.fieldName)){
+                    //                 question_lookup.push(discauth_question);
+                    //             }
+                    //         });
+                    //     });
+                    // console.log('question_lookup', question_lookup);
+                    // } catch (error){
+                    //     console.error("Error loading questions: " + error)
+                    // }
+                },
+                onFormSubmitted: (result) => {
+                    console.log('discauth result', result)
+                    if (result.error && result.error.message){
+                        console.log(result.error.message);
+
+                    } else if (result.surveyFeatureSet){       
+
+                        discauth_response = result.surveyFeatureSet.features[0].attributes;
+                        discauth_response['lang_choice'] = lang_choice;
+                        if(result.surveyFeatureSet.features[0].geometry.x == 0 && result.surveyFeatureSet.features[0].geometry.y == 0){
+                            discauth_response['x'] = null;
+                            discauth_response['y'] = null;
+                            discauth_response['spatial_ref'] = null;
+                        } else{
+                            discauth_response['x'] = result.surveyFeatureSet.features[0].geometry.x;
+                            discauth_response['y'] = result.surveyFeatureSet.features[0].geometry.y;
+                            discauth_response['spatial_ref'] = result.surveyFeatureSet.features[0].geometry.spatialReference.wkid;
+                        }
+                        console.log('discauth_response', discauth_response)
+                        document.getElementById('s123_div').style.display = 'none'; 
+                
+                        init_discauth_lang();
+                    } else{
+                        console.warn("discauth survey was incorrectly submitted. Please retry");
+                    }                   
+                }
+            });
+            }           
+            
+        </script>
+    </body>
+</html>

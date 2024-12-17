@@ -1,0 +1,225 @@
+
+.brdr{
+    border-color: #F3A3A0; border-style:solid;border-width: thin;
+}
+
+#wphs_container {
+    max-width: 768px;
+ } 
+
+.person-letter{
+    font-weight: bold;
+    font-size:2em;
+    width: fit-content;
+}
+
+.person-desc{
+    font-size:1.9em;
+    width:auto;
+}
+
+.copyright{
+    font-size:x-small;
+    text-align: center;
+}
+.intro_div{
+    padding-top: 30px;
+}
+.cont-head{
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #9900CC;
+
+}
+.cont-sub{
+    font-size: 1.0em;
+    font-weight: bolder;
+    color: #09355F;
+
+}
+.rpt-cont{
+    padding-top: 20px;
+    font-size:0.8em;
+    word-wrap:break-word;
+
+}
+#logo_div > img {
+    max-height: 90px;
+    width: auto;
+ }
+ 
+.logo_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/eb07ec59dc1447809be16a384eff8a19/data");
+    max-height: 90px;
+width: auto;
+}
+
+.p_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/ff0c8084e9404c9c80f0801a4004efbb/data");
+    width: 60px; 
+    height: 57px;
+}
+
+.e_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/f05db69e2b2a4dd39e42385a56935bb2/data");
+    width: 60px; 
+    height: 49px;
+}
+
+.r_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/ca78da217f174a8c9e692f773c44f84e/data");
+    width: 60px; 
+    height: 57px;
+}
+
+.s_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/bb709c17566546908986b9b6130f4653/data");
+    width: 34px; 
+    height: 57px;
+}
+
+.o_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/17c08575dc034870b03257e7e46c8327/data");
+    width: 60px; 
+    height: 27px;
+}
+
+.n_img{
+    content:url("https://countyofriverside.maps.arcgis.com/sharing/rest/content/items/a453d9129c46417ea64dea3fde2dc3b7/data");
+    width: 36px; 
+    height: 57px;
+}
+
+.img-cell {
+    height: 80px;
+    width:70px;
+    text-align: center;
+    border-color: #F3A3A0; border-style:none;border-width: thin;
+}
+
+.img-row{
+    height: 60px;
+    width:70px;
+    text-align: center;
+}
+
+.survey-ques{
+    font-size: 0.7em;
+    font-weight: bold;
+    width:fit-content;
+}
+
+.survey-ans{
+    font-size: 0.7em;
+    width:fit-content;
+}
+
+.wphs-tbl{
+    width:100%;
+    border-collapse:collapse;
+    margin: 16px 0px;
+}
+
+.sum-row{
+    width: 16.66%; 
+    font-size: 1.1em; 
+    padding: 10px 5px; 
+    text-align: center;
+    vertical-align: middle; 
+    border-right: 1px solid #dddddd;
+}
+
+.cont-nav{
+    width:100%;
+    text-align: center;
+    padding: 24px;
+}
+
+.wphs-ranges{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ltr-exp{
+    font-weight: bold;
+    margin: 10px;
+    text-align: justify;
+}
+.cat-head{
+    width: fit-content;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.close-out{
+    font-size: smaller;
+}
+
+#intro_div {
+    padding: 24px 0px;
+}
+#s123_div {
+    padding: 24px 0px;
+}
+#err_div {
+    padding: 4px 0px;
+}
+#en_ty_div {
+    padding: 24px 0px;
+}
+#es_ty_div {
+    padding: 24px 0px;
+}
+#en_sum_div {
+    padding: 24px 0px;
+}
+#es_sum_div {
+    padding: 24px 0px;
+}
+#en_res_div {
+    padding: 24px 0px;
+}
+#es_res_div {
+    padding: 24px 0px;
+}
+#wphs_report_div {
+    padding: 24px 0px;
+}
+
+button {
+    /* text-align: center;
+    text-decoration: none;
+    -webkit-appearance: none; */
+    margin: 0;
+    background-color: #09356a;
+    border: 1px solid #09356a;
+    color: #fff;
+    line-height: 19px;
+    font-size: 14px;
+    padding: 10px 30px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    margin: 0;
+    background-color: #ffffff;
+    border: 1px solid #09356a;
+    color: #09356a;
+    cursor: pointer;
+}
+
+body {
+    font-family: Tahoma, sans-serif;
+}

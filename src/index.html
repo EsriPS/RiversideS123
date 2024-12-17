@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>RivCo Forms</title>
+    </head>
+    <body style="overflow: hidden; margin: 0;">
+        <div id="root"> 
+            <iframe type="text/html" src="disclosureauth/disclosureauth_report.html" width="100%" height="100%" id="disclosureauth_parent" frameBorder="0"></iframe>
+            <iframe type="text/html" src="wphs/wphs_report.html" width="100%" height="100%" display="none" hidden id="wphs_parent" frameBorder="0"></iframe>
+        </div>
+        <script>
+            const disc_embed = document.getElementById("disclosureauth_parent");
+            const wphs_embed = document.getElementById("wphs_parent");
+            //const button = document.getElementById("disclosureauth_parent").contentWindow.document.getElementById("btn_ty_en")
+            // test1.addEventListener("click", (e) => {
+            //   embed.src = "test1.html";
+            // });
+          
+            // test2.addEventListener("click", (e) => {
+            //   embed.src = "test2.html";
+            // });
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let disclosure_only = false;
+            if (urlParams.has('loc')){
+                disc_embed.src += '?loc=' + urlParams.get('loc');
+                wphs_embed.src += '?loc=' + urlParams.get('loc');
+            }
+            if (urlParams.get('survey') === 'disclosure') {
+                console.log('Disc Auth Only');
+                disclosure_only = true;
+                disc_embed.src += `${urlParams.has('loc') ? "&" : "?"}survey=disclosure`;
+            }else if (urlParams.get('survey') === 'wphs') {
+                console.log('WPHS Only');
+                wphs_embed.src += `${urlParams.has('loc') ? "&" : "?"}survey=wphs`;
+                disc_embed.style.display = 'none';
+                wphs_embed.style.display = 'block';
+                wphs_embed.style.hidden = false
+            }
+            window.onmessage = function(e) {
+                if (disclosure_only) {
+                    return;
+                }
+                disc_embed.style.display = 'none';
+                wphs_embed.style.display = 'block';
+                wphs_embed.style.hidden = false;
+                if (typeof e.data === "object" && e.data !== null && "address" in e.data) {
+                    wphs_embed.contentWindow.postMessage(e.data, '*');
+                }
+                //alert('It works!');
+            };
+          </script>
+    </body>
+</html>
